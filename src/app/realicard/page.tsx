@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import CreateNewChampion from "@/components/Champion/create";
+import RealiCardComponent from "@/components/RealiCard";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip | Add New",
+    title: "Uzer Pass | Realize Card",
 };
 
-const CreateNew = () => {
+const RealiCard = () => {
   return (
     <DefaultLayout>
-      <CreateNewChampion />
+      <RealiCardComponent />
     </DefaultLayout>
   );
 };
 
-export default CreateNew;
+export default RealiCard;

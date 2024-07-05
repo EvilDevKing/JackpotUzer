@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import CreateNewChampion from "@/components/Champion/create";
+import RegistComponent from "@/components/Registration";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip | Add New",
+    title: "Uzer Pass | Registration Jackpot",
 };
 
-const CreateNew = () => {
+const Regist = () => {
   return (
     <DefaultLayout>
-      <CreateNewChampion />
+      <RegistComponent />
     </DefaultLayout>
   );
 };
 
-export default CreateNew;
+export default Regist;

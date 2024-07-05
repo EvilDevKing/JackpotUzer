@@ -1,15 +1,15 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import CreateNewChampion from "@/components/Champion/create";
+import CreateNewTime from "@/components/Time/create";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip | Add New",
+    title: "Uzer Pass | Configuration | Time | Add New",
 };
 
 const CreateNew = () => {
   return (
     <DefaultLayout>
-      <CreateNewChampion />
+      <CreateNewTime />
     </DefaultLayout>
   );
 };

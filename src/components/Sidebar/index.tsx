@@ -62,7 +62,10 @@ const menuGroups = [
 
             ),
             label: "Campeonato",
-            route: "/config/championship"
+            route: "/config/championship",
+            subRoutes: [
+              "/config/championship/create"
+            ]
           },
           {
             icon: (
@@ -78,7 +81,10 @@ const menuGroups = [
 
             ),
             label: "Time",
-            route: "/config/time"
+            route: "/config/time",
+            subRoutes: [
+              "/config/time/create"
+            ]
           },
           {
             icon: (
@@ -94,7 +100,10 @@ const menuGroups = [
 
             ),
             label: "Valor dos Potes",
-            route: "/config/pots_value"
+            route: "/config/potsvalue",
+            subRoutes: [
+              "/config/potsvalue/create"
+            ]
           },
           {
             icon: (
@@ -110,7 +119,10 @@ const menuGroups = [
 
             ),
             label: "Prêmios",
-            route: "/config/awards"
+            route: "/config/awards",
+            subRoutes: [
+              "/config/awards/create"
+            ]
           },
           {
             icon: (
@@ -126,7 +138,10 @@ const menuGroups = [
 
             ),
             label: "Perguntas",
-            route: "/config/questions"
+            route: "/config/questions",
+            subRoutes: [
+              "/config/questions/create"
+            ]
           },
         ]
       },
@@ -146,6 +161,9 @@ const menuGroups = [
         ),
         label: "Cadastro Jack",
         route: "/regist",
+        subRoutes: [
+          "/regist/create"
+        ]
       },
       {
         icon: (
@@ -167,7 +185,11 @@ const menuGroups = [
           </svg>
         ),
         label: "Cards Realizados",
-        route: "/realize_card",
+        route: "/realicard",
+        subRoutes: [
+          "/realicard/detail",
+          "/realicard/detail/user"
+        ]
       },
       {
         icon: (
@@ -200,7 +222,10 @@ const menuGroups = [
 
             ),
             label: "Cadastro Resultados",
-            route: "/results/regist_results"
+            route: "/results/regist",
+            subRoutes: [
+              "/results/regist/create"
+            ]
           },
           {
             icon: (
@@ -216,7 +241,11 @@ const menuGroups = [
 
             ),
             label: "Ganhadores",
-            route: "/results/winners"
+            route: "/results/winners",
+            subRoutes: [
+              "/results/winners/detail",
+              "/results/winners/detail/user"
+            ]
           },
           {
             icon: (
@@ -232,7 +261,7 @@ const menuGroups = [
 
             ),
             label: "Potes Acumulados",
-            route: "/results/accumulated_pots"
+            route: "/results/accumulpots"
           },
         ],
       },

@@ -4,7 +4,12 @@ import Link from "next/link";
 import {
     Box,
     Button,
+    FormControl,
+    InputLabel,
     TextField,
+    Select,
+    SelectChangeEvent,
+    MenuItem,
     InputAdornment,
     Switch
   } from "@mui/material";
@@ -12,31 +17,29 @@ import { Search } from "@mui/icons-material";
 import Pagination from "../Pagination";
 import { useTheme } from "@mui/material";
 
-const Champion: React.FC = () => {
+const QuestionsComponent: React.FC = () => {
     const theme = useTheme()
+    const [category, setCategory] = useState('')
     const [tableData, setTableData] = useState([
         {
-            description: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            endDate: "30/12/2024",
+            title: "Padrão 01",
+            category: "Valor de Pote",
+            registDate: "10/05/2024",
+            jackpot: "Brasileirão 2024 / Flamengo",
             isActive: true,
         },
         {
-            description: "Campeonato Brasileiro",
-            startDate: "10/05/2025",
-            endDate: "30/12/2024",
-            isActive: false,
-        },
-        {
-            description: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            endDate: "30/12/2024",
+            title: "Padrão 01",
+            category: "Valor de Pote",
+            registDate: "10/05/2024",
+            jackpot: "Brasileirão 2024 / Flamengo",
             isActive: true,
         },
         {
-            description: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            endDate: "30/12/2024",
+            title: "Padrão 01",
+            category: "Valor de Pote",
+            registDate: "10/05/2024",
+            jackpot: "Brasileirão 2024 / Flamengo",
             isActive: true,
         },
     ])
@@ -56,25 +59,40 @@ const Champion: React.FC = () => {
     return (
         <Box display="flex" flexDirection="column">
             <Box display="flex" justifyContent="space-between">
-                <TextField
-                    size="medium"
-                    variant="filled"
-                    placeholder="Pesquisar"
-                    className="left-5 w-[25%]"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Search />
-                            </InputAdornment>
-                        )
-                    }}
-                />
+                <Box display="flex" gap={3} width="50%">
+                    <FormControl variant="filled" className="w-[50%]">
+                        <InputLabel id="demo-simple-select-filled-label">CATEGORIA</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-filled-label"
+                            id="demo-simple-select-filled"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            <MenuItem value={1}>VALOR DO POTE</MenuItem>
+                            <MenuItem value={2}>Twenty</MenuItem>
+                            <MenuItem value={3}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        size="medium"
+                        variant="filled"
+                        placeholder="Pesquisar"
+                        className="left-5 w-[50%]"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Search />
+                                </InputAdornment>
+                            )
+                        }}
+                    />
+                </Box>
                 <Link
-                    href="/config/championship/create"
+                    href="/config/questions/create"
                     className="text-white rounded-[9999px] text-[16px] px-[50px] py-[5px] flex items-center"
                     style={{ backgroundColor: theme.palette.primary.main }}
                 >
-                    Novo Campeonato
+                    Nova Pergunta
                 </Link>
             </Box>
             <div className="mt-10">
@@ -83,13 +101,16 @@ const Champion: React.FC = () => {
                         <thead>
                             <tr className="text-left">
                                 <th className="min-w-[220px] px-4 py-4 font-bold text-dark dark:text-white xl:pl-7.5">
-                                    Descrição
+                                    Titulo
                                 </th>
                                 <th className="min-w-[150px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Data de inicio
+                                    Categoria
                                 </th>
                                 <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Data final
+                                    Data de cadastro
+                                </th>
+                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
+                                    JackPot
                                 </th>
                                 <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
                                     Ativo/Inativo
@@ -102,29 +123,34 @@ const Champion: React.FC = () => {
                         <tbody>
                             {tableData.map((packageItem, index) => (
                             <tr key={index}>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pl-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <h5 className="text-dark dark:text-white">
-                                        {packageItem.description}
+                                        {packageItem.title}
                                     </h5>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
                                     <p className="text-dark dark:text-white">
-                                        {packageItem.startDate}
+                                        {packageItem.category}
                                     </p>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
                                     <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.endDate}
+                                        {packageItem.registDate}
                                     </p>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
+                                        {packageItem.jackpot}
+                                    </p>
+                                </td>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <Switch
                                         checked={packageItem.isActive}
                                         onChange={(e) => handleChange(index, tableData, e.target.checked)}
                                         inputProps={{ 'aria-label': 'controlled' }}
                                      />
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pr-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pr-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <button className="text-red-dark" onClick={(e) => deleteItem(index, tableData)}>
                                         <svg
                                             className="fill-current"
@@ -154,4 +180,4 @@ const Champion: React.FC = () => {
     )
 }
 
-export default Champion;
+export default QuestionsComponent;

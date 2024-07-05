@@ -15,13 +15,13 @@ const SidebarDropdown = ({ item }: any) => {
             <Link
               href={item.route}
               className={`relative flex rounded-[7px] px-3.5 py-2 font-medium duration-300 ease-in-out items-center gap-3 ${
-                pathname === item.route
-                  ? "bg-primary/[.07] dark:bg-white/10 dark:text-white"
-                  : "text-dark-4 hover:bg-gray-2 hover:text-dark dark:text-gray-5 dark:hover:bg-white/10 dark:hover:text-white"
+                pathname === item.route || (item.subRoutes && item.subRoutes.includes(pathname))
+                  ? "bg-primary/[.07]"
+                  : "text-dark-4 hover:bg-gray-2 hover:text-dark"
               }`}
-              style={{ color: pathname === item.route ? theme.palette.primary.main : "black" }}
+              style={{ color: pathname === item.route || (item.subRoutes && item.subRoutes.includes(pathname)) ? theme.palette.primary.main : "black" }}
             >
-              { pathname === item.route ? item.active_icon : item.icon }
+              { pathname === item.route || (item.subRoutes && item.subRoutes.includes(pathname)) ? item.active_icon : item.icon }
               {item.label}
             </Link>
           </li>

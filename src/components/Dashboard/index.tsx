@@ -1,6 +1,17 @@
 "use client";
-import React, {useEffect} from "react";
-import SearchForm from "@/components/SearchElements/SearchForm";
+import React, {useState, useEffect} from "react";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  SelectChangeEvent,
+  MenuItem,
+  TextField,
+  InputAdornment
+} from "@mui/material";
+import { Search, GridView, FilterAlt, Menu } from "@mui/icons-material";
 import { Gauge, gaugeClasses, LineChart } from '@mui/x-charts';
 import { useTheme } from "@mui/material";
 
@@ -29,6 +40,11 @@ const monthLabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'
 
 const Dashboard: React.FC = () => {
   const theme = useTheme()
+  const [age, setAge] = useState('')
+
+  const handleChange = (e: SelectChangeEvent) => {
+      setAge(e.target.value);
+  }
 
   useEffect(() => {
     let gaugeRoots = document.querySelectorAll('.MuiGauge-root')
@@ -43,15 +59,58 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <SearchForm />
-      <div className="flex gap-5 mt-10">
-        <div className="w-[40%] flex flex-col">
-          <div className="p-5 rounded-[10px] shadow-card-10 bg-white flex justify-between items-center">
-            <div className="flex flex-col">
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Box display="flex" alignItems="center" width="100%">
+          <FormControl variant="filled" className="w-[25%]">
+              <InputLabel id="demo-simple-select-filled-label">Tipos de Evento</InputLabel>
+              <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  value={age}
+                  onChange={handleChange}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+          </FormControl>
+          <TextField
+              size="medium"
+              variant="filled"
+              placeholder="Pesquisar"
+              className="left-5 w-[25%]"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                )
+              }}
+            />
+        </Box>
+        <Box display="flex" alignItems="center">
+          <Button onClick={() => console.log("asdfadf")}>
+            <Box display="flex" alignItems="center" gap={1}>
+              <FilterAlt color="primary" />
+              <span className="underline" style={{ color: theme.palette.primary.main }}>Filtros</span>
+            </Box>
+          </Button>
+          <Button sx={{ width: 'auto' }}>
+            <GridView color="primary"/>
+          </Button>
+          <Button>
+            <Menu />
+          </Button>
+        </Box>
+      </Box>
+      <Box display="flex" gap={5} marginTop={3}>
+        <Box display="flex" flexDirection="column" width="40%">
+          <Box display="flex" justifyContent="space-between" alignItems="center" padding={2} bgcolor="white" boxShadow={3} borderRadius={2}>
+            <Box display="flex" flexDirection="column">
               <span className="font-bold text-[14px]">APOSTAS DO DIA</span>
               <span className="font-bold text-[25px]" style={{ color: theme.palette.primary.main }}>R$ 12.239,09</span>
               <span className="text-[12px]">59 INGRESSOS</span>
-            </div>
+            </Box>
             <Gauge
               {...settings}
               value={70}
@@ -77,14 +136,14 @@ const Dashboard: React.FC = () => {
                 ({ value, valueMax }) => `${value}%`
               }
             />
-          </div>
-          <div className="p-5 mt-10 rounded-[10px] shadow-card-10 bg-white flex flex-col">
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col">
+          </Box>
+          <Box display="flex" flexDirection="column" bgcolor="white" padding={2} marginTop={5} borderRadius={2} boxShadow={3}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Box display="flex" flexDirection="column">
                 <span className="font-bold text-[14px]">TOTAL DE APOSTAS</span>
                 <span className="font-bold text-[25px]" style={{ color: theme.palette.primary.main }}>R$ 192.239,09</span>
                 <span className="text-[12px]">15.805 INGRESSOS</span>
-              </div>
+              </Box>
               <Gauge
                 {...settings}
                 value={90}
@@ -110,59 +169,59 @@ const Dashboard: React.FC = () => {
                   ({ value, valueMax }) => `${value}%`
                 }
               />
-            </div>
-            <div className="flex items-center gap-10">
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+            </Box>
+            <Box display="flex" alignItems="center" gap={5}>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#002FA7] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>EMBAIXADOR</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#F0641A] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>CAMAROTE</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#39474F] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>PALCO</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="p-5 mt-10 rounded-[10px] shadow-card-10 bg-white flex flex-col">
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col">
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box display="flex" flexDirection="column" bgcolor="white" padding={2} marginTop={5} borderRadius={2} boxShadow={3}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Box display="flex" flexDirection="column">
                 <span className="font-bold text-[14px]">APOSTAS ESPERADAS</span>
                 <span className="font-bold text-[25px]" style={{ color: theme.palette.primary.main }}>80.589</span>
                 <span className="text-[12px]">PESSOAS</span>
-              </div>
+              </Box>
               <Gauge
                 {...settings}
                 value={95}
@@ -188,47 +247,47 @@ const Dashboard: React.FC = () => {
                   ({ value, valueMax }) => `${value}%`
                 }
               />
-            </div>
-            <div className="flex items-center gap-10">
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+            </Box>
+            <Box display="flex" alignItems="center" gap={5}>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#00A72F] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>PAGANTES</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#9E50EE] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>CORTESIAS</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-[60%] flex flex-col">
-          <div className="p-5 rounded-[10px] shadow-card-10 bg-white flex flex-col">
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col">
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" width="60%">
+          <Box display="flex" flexDirection="column" bgcolor="white" padding={2} borderRadius={2} boxShadow={3}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Box display="flex" flexDirection="column">
                 <span className="font-bold text-[14px]">APOSTAS DA SEMANA</span>
                 <span className="font-bold text-[25px]" style={{ color: theme.palette.primary.main }}>R$ 300.239,09</span>
                 <span className="text-[12px]">15.805 INGRESSOS</span>
-              </div>
+              </Box>
               <Gauge
                 {...settings}
                 value={55}
@@ -254,59 +313,59 @@ const Dashboard: React.FC = () => {
                   ({ value, valueMax }) => `${value}%`
                 }
               />
-            </div>
-            <div className="flex items-center gap-10">
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+            </Box>
+            <Box display="flex" alignItems="center" gap={5}>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#002FA7] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>EMBAIXADOR</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#F0641A] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent' 
                   }}>CAMAROTE</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-              <div className="flex flex-col leading-8">
-                <div className="flex items-center gap-2">
+                </Box>
+              </Box>
+              <Box display="flex" flexDirection="column" lineHeight={2}>
+                <Box display="flex" alignItems="center" gap={1}>
                   <span className="w-[8px] h-[8px] bg-[#39474F] rounded-[9999px]"></span>
                   <span className="font-bold text-[11px]" style={{ 
                     background: `-webkit-linear-gradient(-45deg, ${theme.palette.secondary.dark} 30%, ${theme.palette.secondary.light} 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
                   }}>PALCO</span>
-                </div>
-                <div className="flex flex-col leading-3 ml-4">
+                </Box>
+                <Box display="flex" flexDirection="column" lineHeight={1.5} marginLeft={1}>
                   <span className="font-bold text-[11px]" style={{ color: theme.palette.primary.main }}>R$ 6.687,15</span>
                   <span className="font-bold text-[8px]">847 ingressos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="p-5 mt-5 rounded-[10px] shadow-card-10 bg-white flex flex-col">
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col">
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box display="flex" flexDirection="column" bgcolor="white" padding={2} marginTop={3} borderRadius={2} boxShadow={3}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Box display="flex" flexDirection="column">
                 <span className="font-bold text-[14px]">APOSTAS DO MÊS</span>
                 <span className="font-bold text-[25px]" style={{ color: theme.palette.primary.main }}>R$ 192.239,09</span>
                 <span className="text-[12px]">15.805 INGRESSOS</span>
-              </div>
+              </Box>
               <Gauge
                 {...settings}
                 value={90}
@@ -332,7 +391,7 @@ const Dashboard: React.FC = () => {
                   ({ value, valueMax }) => `${value}%`
                 }
               />
-            </div>
+            </Box>
             <LineChart
               height={250}
               series={[{ data: uData, area: true, showMark: false }]}
@@ -361,9 +420,9 @@ const Dashboard: React.FC = () => {
                 },
               }}
             />
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 };

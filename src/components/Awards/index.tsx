@@ -12,31 +12,35 @@ import { Search } from "@mui/icons-material";
 import Pagination from "../Pagination";
 import { useTheme } from "@mui/material";
 
-const Champion: React.FC = () => {
+const AwardsComponent: React.FC = () => {
     const theme = useTheme()
     const [tableData, setTableData] = useState([
         {
+            category: "Goiás",
             description: "Campeonato Brasileiro 2024",
             startDate: "10/05/2024",
-            endDate: "30/12/2024",
+            status: "R$ 15.000,00",
             isActive: true,
         },
         {
-            description: "Campeonato Brasileiro",
-            startDate: "10/05/2025",
-            endDate: "30/12/2024",
+            category: "Goiás",
+            description: "Campeonato Brasileiro 2024",
+            startDate: "10/05/2024",
+            status: "R$ 15.000,00",
+            isActive: true,
+        },
+        {
+            category: "Goiás",
+            description: "Campeonato Brasileiro 2024",
+            startDate: "10/05/2024",
+            status: "R$ 15.000,00",
             isActive: false,
         },
         {
+            category: "Goiás",
             description: "Campeonato Brasileiro 2024",
             startDate: "10/05/2024",
-            endDate: "30/12/2024",
-            isActive: true,
-        },
-        {
-            description: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            endDate: "30/12/2024",
+            status: "R$ 15.000,00",
             isActive: true,
         },
     ])
@@ -70,11 +74,11 @@ const Champion: React.FC = () => {
                     }}
                 />
                 <Link
-                    href="/config/championship/create"
+                    href="/config/awards/create"
                     className="text-white rounded-[9999px] text-[16px] px-[50px] py-[5px] flex items-center"
                     style={{ backgroundColor: theme.palette.primary.main }}
                 >
-                    Novo Campeonato
+                    Novo Prêmio
                 </Link>
             </Box>
             <div className="mt-10">
@@ -83,13 +87,16 @@ const Champion: React.FC = () => {
                         <thead>
                             <tr className="text-left">
                                 <th className="min-w-[220px] px-4 py-4 font-bold text-dark dark:text-white xl:pl-7.5">
-                                    Descrição
+                                    Categoria
                                 </th>
                                 <th className="min-w-[150px] px-4 py-4 font-bold text-dark dark:text-white">
+                                    Descrição
+                                </th>
+                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
                                     Data de inicio
                                 </th>
                                 <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Data final
+                                    Status
                                 </th>
                                 <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
                                     Ativo/Inativo
@@ -102,29 +109,34 @@ const Champion: React.FC = () => {
                         <tbody>
                             {tableData.map((packageItem, index) => (
                             <tr key={index}>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pl-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <h5 className="text-dark dark:text-white">
-                                        {packageItem.description}
+                                        {packageItem.category}
                                     </h5>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
                                     <p className="text-dark dark:text-white">
+                                        {packageItem.description}
+                                    </p>
+                                </td>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
                                         {packageItem.startDate}
                                     </p>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
                                     <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.endDate}
+                                        {packageItem.status}
                                     </p>
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <Switch
                                         checked={packageItem.isActive}
                                         onChange={(e) => handleChange(index, tableData, e.target.checked)}
                                         inputProps={{ 'aria-label': 'controlled' }}
                                      />
                                 </td>
-                                <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pr-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pr-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
                                     <button className="text-red-dark" onClick={(e) => deleteItem(index, tableData)}>
                                         <svg
                                             className="fill-current"
@@ -154,4 +166,4 @@ const Champion: React.FC = () => {
     )
 }
 
-export default Champion;
+export default AwardsComponent;

@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import CreateNewChampion from "@/components/Champion/create";
+import PotsValueComponent from "@/components/PotsValue";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip | Add New",
+    title: "Uzer Pass | Configuration | Value of Pots",
 };
 
-const CreateNew = () => {
+const PotsValue = () => {
   return (
     <DefaultLayout>
-      <CreateNewChampion />
+      <PotsValueComponent />
     </DefaultLayout>
   );
 };
 
-export default CreateNew;
+export default PotsValue;

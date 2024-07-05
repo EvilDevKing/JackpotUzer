@@ -10,7 +10,7 @@ const Header = (props: {
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
   const pathName = usePathname();
-  const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+  const [pageName, setPageName] = useLocalStorage("selectedMenu", "Inicio");
   return (
     <header className="sticky top-10 px-15 z-999 flex w-full">
       <div className="flex flex-grow items-center justify-between px-4 py-5 shadow-card-10 md:px-5 2xl:px-10 rounded-[10px] bg-white">
@@ -62,13 +62,13 @@ const Header = (props: {
         <div className="hidden xl:block">
           <div>
             <h1 className="text-heading-6 font-bold text-dark dark:text-white">
-              Dashboard
+              {pageName.trim() && pageName.split(' ').map((text, i) => text[0].toUpperCase() + text.substring(1)).join(' ')}
             </h1>
           </div>
         </div>
 
         <div className="flex items-center justify-normal gap-2 2xsm:gap-4 lg:w-full lg:justify-between xl:w-auto xl:justify-normal">
-          <Breadcrumb pageName={pageName} />
+          <Breadcrumb mainPageName={pageName} />
         </div>
       </div>
     </header>

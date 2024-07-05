@@ -1,21 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SidebarDropdown from "@/components/Sidebar/SidebarDropdown";
 
 const SidebarItem = ({ item, pageName, setPageName }: any) => {
-  const handleClick = () => {
-    const updatedPageName =
-      pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
-    return setPageName(updatedPageName);
-  };
+  const pathname = usePathname()
 
   return (
     <>
       <li>
         <Link
           href={item.route}
-          onClick={handleClick}
-          className={`${pageName === item.label.toLowerCase() ? "bg-[#05B59D] text-white dark:bg-white/10 dark:text-white rounded-tr-[9999px] rounded-br-[9999px]" : "text-dark-4 hover:bg-gray-2 hover:text-dark dark:text-gray-5 dark:hover:bg-white/10 dark:hover:text-white"} group relative flex items-center gap-3 rounded-[7px] px-3.5 py-2 font-medium duration-300 ease-in-out`}
+          onClick={() => setPageName(item.label.toLowerCase())}
+          className={`${pageName === item.label.toLowerCase() || (item.subRoutes && item.subRoutes.includes(pathname)) ? "bg-[#05B59D] text-white rounded-tr-[9999px] rounded-br-[9999px]" : "text-dark-4 hover:bg-gray-2 hover:text-dark"} group relative flex items-center gap-3 rounded-[7px] px-3.5 py-2 font-medium duration-300 ease-in-out`}
         >
           {item.icon}
           {item.label}

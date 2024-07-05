@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import CreateNewChampion from "@/components/Champion/create";
+import QuestionsComponent from "@/components/Questions";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip | Add New",
+    title: "Uzer Pass | Configuration | Questions",
 };
 
-const CreateNew = () => {
+const Awards = () => {
   return (
     <DefaultLayout>
-      <CreateNewChampion />
+      <QuestionsComponent />
     </DefaultLayout>
   );
 };
 
-export default CreateNew;
+export default Awards;

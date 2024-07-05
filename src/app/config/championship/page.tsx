@@ -3,7 +3,7 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import Champion from "@/components/Champion";
 
 export const metadata: Metadata = {
-    title: "Uzer Pass | ChampionShip",
+    title: "Uzer Pass | Configuration | ChampionShip",
 };
 
 const Championship = () => {
