@@ -3,51 +3,40 @@ import React, {useState} from "react";
 import Link from "next/link";
 import {
     Box,
-    Button,
     TextField,
     InputAdornment,
-    Switch
+    Switch,
+    Table,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody
   } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import Pagination from "../Pagination";
 import { useTheme } from "@mui/material";
 
+function createData(
+    teamName: string,
+    champion: string,
+    startDate: string,
+    initValue: string,
+    curValue: string,
+    isActive: boolean,
+) {
+    return { teamName, champion, startDate, initValue, curValue, isActive };
+}
+
+const rows = [
+    createData("Goiás", "Campeonato Brasileiro 2024", "10/05/2024", "R$ 1.000,00", "R$ 15.000,00", true),
+    createData("Goiás", "Campeonato Brasileiro 2024", "10/05/2024", "R$ 1.000,00", "R$ 15.000,00", true),
+    createData("Goiás", "Campeonato Brasileiro 2024", "10/05/2024", "R$ 1.000,00", "R$ 15.000,00", false),
+    createData("Goiás", "Campeonato Brasileiro 2024", "10/05/2024", "R$ 1.000,00", "R$ 15.000,00", true),
+]
+
 const PotsValueComponent: React.FC = () => {
     const theme = useTheme()
-    const [tableData, setTableData] = useState([
-        {
-            teamName: "Goiás",
-            champion: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            initValue: "R$ 1.000,00",
-            curValue: "R$ 15.000,00",
-            isActive: true,
-        },
-        {
-            teamName: "Goiás",
-            champion: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            initValue: "R$ 1.000,00",
-            curValue: "R$ 15.000,00",
-            isActive: true,
-        },
-        {
-            teamName: "Goiás",
-            champion: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            initValue: "R$ 1.000,00",
-            curValue: "R$ 15.000,00",
-            isActive: false,
-        },
-        {
-            teamName: "Goiás",
-            champion: "Campeonato Brasileiro 2024",
-            startDate: "10/05/2024",
-            initValue: "R$ 1.000,00",
-            curValue: "R$ 15.000,00",
-            isActive: true,
-        },
-    ])
+    const [tableData, setTableData] = useState(rows)
 
     const handleChange = (index: any, data: any, isActive: Boolean) => {
         setTableData(data.map((item: any, i: any) => 
@@ -85,71 +74,46 @@ const PotsValueComponent: React.FC = () => {
                     Novo Pote
                 </Link>
             </Box>
-            <div className="mt-10">
-                <div className="max-w-full overflow-x-auto">
-                    <table className="w-full table-auto">
-                        <thead>
-                            <tr className="text-left">
-                                <th className="min-w-[220px] px-4 py-4 font-bold text-dark dark:text-white xl:pl-7.5">
-                                    Time do Pote
-                                </th>
-                                <th className="min-w-[150px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Campeonato
-                                </th>
-                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Data de inicio
-                                </th>
-                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Valor inicial
-                                </th>
-                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Saldo atual
-                                </th>
-                                <th className="min-w-[120px] px-4 py-4 font-bold text-dark dark:text-white">
-                                    Ativo/Inativo
-                                </th>
-                                <th className="px-4 py-4 font-bold text-dark dark:text-white xl:pr-7.5">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((packageItem, index) => (
-                            <tr key={index}>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pl-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
-                                    <h5 className="text-dark dark:text-white">
-                                        {packageItem.teamName}
-                                    </h5>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className="text-dark dark:text-white">
-                                        {packageItem.champion}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.startDate}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.initValue}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.curValue}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
+            <Box maxHeight="500px" overflow='auto' marginTop={3}>
+                <Table stickyHeader>
+                    <TableHead sx={{
+                        '& th': {
+                            fontWeight: 700
+                        }
+                    }}>
+                        <TableRow>
+                            <TableCell>Time do Pote</TableCell>
+                            <TableCell align="center">Campeonato</TableCell>
+                            <TableCell align="center">Data de inicio</TableCell>
+                            <TableCell align="center">Valor inicial</TableCell>
+                            <TableCell align="center">Saldo atual</TableCell>
+                            <TableCell align="center">Ativo/Inativo</TableCell>
+                            <TableCell align="center"></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {tableData.map((row, i) => (
+                        <TableRow
+                            key={i}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">{row.teamName}</TableCell>
+                            <TableCell align="center">{row.champion}</TableCell>
+                            <TableCell align="center">{row.startDate}</TableCell>
+                            <TableCell align="center">{row.initValue}</TableCell>
+                            <TableCell align="center">{row.curValue}</TableCell>
+                            <TableCell>
+                                <Box display="flex" justifyContent="center" alignItems="center">
                                     <Switch
-                                        checked={packageItem.isActive}
-                                        onChange={(e) => handleChange(index, tableData, e.target.checked)}
+                                        checked={row.isActive}
+                                        onChange={(e) => handleChange(i, tableData, e.target.checked)}
                                         inputProps={{ 'aria-label': 'controlled' }}
-                                     />
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 xl:pr-7.5 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
-                                    <button className="text-red-dark" onClick={(e) => deleteItem(index, tableData)}>
+                                    />
+                                </Box>
+                            </TableCell>
+                            <TableCell>
+                                <Box display="flex" justifyContent="center" alignItems="center">
+                                    <button className="text-red-dark" onClick={(e) => deleteItem(i, tableData)}>
                                         <svg
                                             className="fill-current"
                                             width="20"
@@ -164,13 +128,13 @@ const PotsValueComponent: React.FC = () => {
                                             <path d="M12.1449 8.5448C12.4884 8.57915 12.739 8.88542 12.7047 9.22889L12.288 13.3956C12.2536 13.739 11.9474 13.9896 11.6039 13.9553C11.2604 13.9209 11.0098 13.6146 11.0442 13.2712L11.4609 9.10451C11.4952 8.76104 11.8015 8.51045 12.1449 8.5448Z" fill="" />
                                         </svg>
                                     </button>
-                                </td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                                </Box>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </Box>
             <Box display="flex" justifyContent="end" marginTop={5}>
                 <Pagination />
             </Box>

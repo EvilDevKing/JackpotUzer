@@ -16,52 +16,28 @@ import { Search, FilterAlt, FilterAltOutlined } from "@mui/icons-material";
 import Pagination from "../Pagination";
 import { useTheme } from "@mui/material";
 
+function createData(
+    event: string,
+    endDate: string,
+    registDate: string,
+    releaseDate: string,
+    status: string
+) {
+    return { event, endDate, registDate, releaseDate, status };
+}
+
+const rows = [
+    createData("Flamengo X Goiás", "20/05/2024", "21/05/2024", "21/05/2024", "Lançado"),
+    createData("Flamengo X Goiás", "20/05/2024", "-", "-", "Aguardando apuração"),
+    createData("Flamengo X Goiás", "20/05/2024", "-", "-", "Aguardando apuração"),
+    createData("Flamengo X Goiás", "20/05/2024", "-", "-", "Aguardando apuração"),
+    createData("Flamengo X Goiás", "20/05/2024", "21/05/2024", "21/05/2024", "Lançado"),
+    createData("Flamengo X Goiás", "20/05/2024", "21/05/2024", "21/05/2024", "Lançado"),
+]
+
 const ResultsRegistComponent: React.FC = () => {
     const theme = useTheme()
-    const [tableData, setTableData] = useState([
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "21/05/2024",
-            releaseDate: "21/05/2024",
-            status: "Lançado"
-        },
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "-",
-            releaseDate: "-",
-            status: "Aguardando apuração"
-        },
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "-",
-            releaseDate: "-",
-            status: "Aguardando apuração"
-        },
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "-",
-            releaseDate: "-",
-            status: "Aguardando apuração"
-        },
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "21/05/2024",
-            releaseDate: "21/05/2024",
-            status: "Lançado"
-        },
-        {
-            event: "Flamengo X Goiás",
-            endDate: "20/05/2024",
-            registDate: "21/05/2024",
-            releaseDate: "21/05/2024",
-            status: "Lançado"
-        },
-    ])
+    const [tableData, setTableData] = useState(rows)
 
     return (
         <Box display="flex" flexDirection="column">

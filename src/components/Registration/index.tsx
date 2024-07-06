@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import Link from "next/link";
 import {
     Box,
-    Button,
     FormControl,
     InputLabel,
     TextField,
@@ -11,65 +10,40 @@ import {
     SelectChangeEvent,
     MenuItem,
     InputAdornment,
-    Switch
+    Table,
+    TableHead,
+    TableBody,
+    TableRow,
+    TableCell
   } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import Pagination from "../Pagination";
 import { useTheme } from "@mui/material";
 
+function createData(
+    createdDate: string,
+    event: string,
+    championship: string,
+    potValue: string,
+    status: string,
+    endedDate: string
+) {
+    return { createdDate, event, championship, potValue, status, endedDate };
+}
+
+const rows = [
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Ativo", "30/05/2024"),
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Encerrado", "21/04/2024"),
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Encerrado", "19/04/2024"),
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Ativo", "30/05/2024"),
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Ativo", "30/05/2024"),
+    createData("21/05/2024", "Flamengo X Goiás", "Campeonato Brasileiro", "R$ 16.000,00", "Ativo", "30/05/2024")
+]
+
 const RegistComponent: React.FC = () => {
     const theme = useTheme()
     const [typeJackpot, setTypeJackpot] = useState('')
-    const [tableData, setTableData] = useState([
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Ativo",
-            endedDate: "30/05/2024"
-        },
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Encerrado",
-            endedDate: "21/04/2024"
-        },
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Encerrado",
-            endedDate: "19/04/2024"
-        },
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Ativo",
-            endedDate: "30/05/2024"
-        },
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Ativo",
-            endedDate: "30/05/2024"
-        },
-        {
-            createdDate: "21/05/2024",
-            event: "Flamengo X Goiás",
-            championship: "Campeonato Brasileiro",
-            potValue: "R$ 16.000,00",
-            status: "Ativo",
-            endedDate: "30/05/2024"
-        }
-    ])
+    const [tableData, setTableData] = useState(rows)
 
     const handleChange = (index: any, data: any, isActive: Boolean) => {
         setTableData(data.map((item: any, i: any) => 
@@ -122,80 +96,39 @@ const RegistComponent: React.FC = () => {
                     Novo JackPot
                 </Link>
             </Box>
-            <div className="mt-10">
-                <div className="max-w-full overflow-x-auto">
-                    <table className="w-full table-auto">
-                        <thead>
-                            <tr className="text-center">
-                                <th className="py-4 font-bold text-dark dark:text-white">
-                                    Data de Criação
-                                </th>
-                                <th className="min-w-[150px] py-4 font-bold text-dark dark:text-white">
-                                    Evento/Local Controlado
-                                </th>
-                                <th className="min-w-[120px] py-4 font-bold text-dark dark:text-white">
-                                    Campeonato
-                                </th>
-                                <th className="min-w-[120px] py-4 font-bold text-dark dark:text-white">
-                                    Valor atual do pote
-                                </th>
-                                <th className="min-w-[120px] py-4 font-bold text-dark dark:text-white">
-                                    Status
-                                </th>
-                                <th className="py-4 font-bold text-dark dark:text-white">
-                                    Data de encerramento
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((packageItem, index) => (
-                            <tr key={index} className="text-center">
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
-                                    <h5 className="text-dark dark:text-white">
-                                        {packageItem.createdDate}
-                                    </h5>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className="text-dark dark:text-white">
-                                        {packageItem.event}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.championship}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`}>
-                                    <p className={`inline-flex rounded-full py-1 text-body-sm font-medium`}>
-                                        {packageItem.potValue}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
-                                    <p
-                                        className={`inline-flex rounded-full py-1 text-body-sm font-medium`}
-                                        style={{
-                                            color: packageItem.status === "Ativo" ? theme.palette.primary.main : theme.palette.error.main
-                                        }}
-                                    >
-                                        {packageItem.status}
-                                    </p>
-                                </td>
-                                <td className={`border-[#eee] px-4 py-2 dark:border-dark-3 ${index === tableData.length - 1 ? "border-b-0" : "border-b"}`} >
-                                    <p
-                                        className={`inline-flex rounded-full py-1 text-body-sm font-medium`}
-                                        style={{
-                                            color: packageItem.status === "Ativo" ? theme.palette.primary.main : theme.palette.error.main
-                                        }}
-                                    >
-                                        {packageItem.endedDate}
-                                    </p>
-                                </td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <Box maxHeight="500px" overflow='auto' marginTop={3}>
+                <Table stickyHeader>
+                    <TableHead sx={{
+                        '& th': {
+                            fontWeight: 700
+                        }
+                    }}>
+                        <TableRow>
+                            <TableCell>Data de Criação</TableCell>
+                            <TableCell align="center">Evento/Local Controlado</TableCell>
+                            <TableCell align="center">Campeonato</TableCell>
+                            <TableCell align="center">Valor atual do pote</TableCell>
+                            <TableCell align="center">Status</TableCell>
+                            <TableCell align="center">Data de encerramento</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {tableData.map((row, i) => (
+                        <TableRow
+                            key={i}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell component="th" scope="row">{row.createdDate}</TableCell>
+                            <TableCell align="center">{row.event}</TableCell>
+                            <TableCell align="center">{row.championship}</TableCell>
+                            <TableCell align="center">{row.potValue}</TableCell>
+                            <TableCell align="center" style={{ color: row.status === "Ativo" ? theme.palette.primary.main : theme.palette.error.main }}>{row.status}</TableCell>
+                            <TableCell align="center" style={{ color: row.status === "Ativo" ? theme.palette.primary.main : theme.palette.error.main }}>{row.endedDate}</TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </Box>
             <Box display="flex" justifyContent="end" marginTop={5}>
                 <Pagination />
             </Box>
