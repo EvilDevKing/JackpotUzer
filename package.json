@@ -15,15 +15,10 @@
     "@mui/x-charts": "^7.8.0",
     "@mui/x-date-pickers": "^7.8.0",
     "dayjs": "^1.11.11",
-    "flatpickr": "^4.6.13",
-    "jsvectormap": "^1.6.0",
     "next": "^14.2.4",
     "react": "^18.3.1",
-    "react-apexcharts": "^1.4.1",
     "react-dom": "^18.3.1",
-    "react-quill": "^2.0.0",
-    "react-select": "^5.8.0",
-    "react-table": "^7.8.0"
+    "react-quill": "^2.0.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.11.4",
