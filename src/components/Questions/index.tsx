@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     FormControl,
@@ -16,10 +16,10 @@ import {
     TableRow,
     TableCell,
     TableBody
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     title: string,
@@ -28,7 +28,7 @@ function createData(
     jackpot: string,
     isActive: boolean
 ) {
-    return { title, category, registDate, jackpot, isActive };
+    return { title, category, registDate, jackpot, isActive }
 }
 
 const rows = [
@@ -67,8 +67,7 @@ const QuestionsComponent: React.FC = () => {
                             onChange={(e) => setCategory(e.target.value)}
                         >
                             <MenuItem value={1}>VALOR DO POTE</MenuItem>
-                            <MenuItem value={2}>Twenty</MenuItem>
-                            <MenuItem value={3}>Thirty</MenuItem>
+                            <MenuItem value={2}>PRÊMIOS</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField
@@ -159,4 +158,4 @@ const QuestionsComponent: React.FC = () => {
     )
 }
 
-export default QuestionsComponent;
+export default QuestionsComponent

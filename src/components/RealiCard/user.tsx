@@ -1,15 +1,15 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
+import React, {useState} from "react"
+import Image from "next/image"
 import {
     Box,
     Tab,
     TextField
-  } from "@mui/material";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import CheckButton from "../common/CheckButton";
-import { Close } from "@mui/icons-material";
-import {useTheme} from "@mui/material";
+  } from "@mui/material"
+import { TabContext, TabList, TabPanel } from "@mui/lab"
+import CheckButton from "../common/CheckButton"
+import { Close } from "@mui/icons-material"
+import {useTheme} from "@mui/material"
 
 const RealiCardDetailUserComponent: React.FC = () => {
     const theme = useTheme()
@@ -218,4 +218,4 @@ const RealiCardDetailUserComponent: React.FC = () => {
     )
 }
 
-export default RealiCardDetailUserComponent;
+export default RealiCardDetailUserComponent

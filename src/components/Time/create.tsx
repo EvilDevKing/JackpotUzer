@@ -1,11 +1,11 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
+import React, {useState} from "react"
+import Image from "next/image"
 import {
     Box,
     Button,
     TextField
-  } from "@mui/material";
+  } from "@mui/material"
 
 const CreateNewTime: React.FC = () => {
     const [imageData, setImageData] = useState('')
@@ -13,18 +13,18 @@ const CreateNewTime: React.FC = () => {
 
     const readFileDataAsBase64 = (file: any) => {
         return new Promise((resolve, reject) => {
-            const reader = new FileReader();
+            const reader = new FileReader()
     
             reader.onload = (event) => {
-                resolve(event.target?.result);
-            };
+                resolve(event.target?.result)
+            }
     
             reader.onerror = (err) => {
-                reject(err);
-            };
+                reject(err)
+            }
     
-            reader.readAsDataURL(file);
-        });
+            reader.readAsDataURL(file)
+        })
     }
 
     return (
@@ -116,4 +116,4 @@ const CreateNewTime: React.FC = () => {
     )
 }
 
-export default CreateNewTime;
+export default CreateNewTime

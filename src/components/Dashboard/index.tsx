@@ -1,5 +1,5 @@
-"use client";
-import React, {useState, useEffect} from "react";
+"use client"
+import React, {useState, useEffect} from "react"
 import {
   Box,
   Button,
@@ -10,18 +10,18 @@ import {
   MenuItem,
   TextField,
   InputAdornment
-} from "@mui/material";
-import { Search, GridView, FilterAlt, Menu } from "@mui/icons-material";
-import { Gauge, gaugeClasses, LineChart } from '@mui/x-charts';
-import { useTheme } from "@mui/material";
+} from "@mui/material"
+import { Search, GridView, FilterAlt, Menu } from "@mui/icons-material"
+import { Gauge, gaugeClasses, LineChart } from '@mui/x-charts'
+import { useTheme } from "@mui/material"
 
 const settings = {
   width: 100,
   height: 100,
   innerRadius: "70%"
-};
+}
 
-const uData = [200, 100, 450, 50, 150, 80, 350, 200, 280, 300, 480, 130];
+const uData = [200, 100, 450, 50, 150, 80, 350, 200, 280, 300, 480, 130]
 const xLabels = [
   new Date(2024, 0, 1),
   new Date(2024, 1, 1),
@@ -35,21 +35,21 @@ const xLabels = [
   new Date(2024, 9, 1),
   new Date(2024, 10, 1),
   new Date(2024, 11, 1)
-];
-const monthLabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+]
+const monthLabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 const Dashboard: React.FC = () => {
   const theme = useTheme()
   const [age, setAge] = useState('')
 
   const handleChange = (e: SelectChangeEvent) => {
-      setAge(e.target.value);
+      setAge(e.target.value)
   }
 
   useEffect(() => {
     let gaugeRoots = document.querySelectorAll('.MuiGauge-root')
     gaugeRoots.forEach((g: any) => {
-      g.style.flexGrow = 0;
+      g.style.flexGrow = 0
       let svg = g.querySelector("svg")
       let svg_html_string = svg.innerHTML
       svg_html_string += `<defs><linearGradient id="gradient"><stop offset="5%" stop-color="${theme.palette.secondary.light}" /><stop offset="95%" stop-color="${theme.palette.secondary.dark}" /></linearGradient></defs>`
@@ -424,7 +424,7 @@ const Dashboard: React.FC = () => {
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

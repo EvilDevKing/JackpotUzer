@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     TextField,
@@ -11,10 +11,10 @@ import {
     TableBody,
     TableRow,
     TableCell
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     description: string,
@@ -22,7 +22,7 @@ function createData(
     endDate: string,
     isActive: boolean
 ) {
-    return { description, startDate, endDate, isActive };
+    return { description, startDate, endDate, isActive }
 }
 
 const rows = [
@@ -30,7 +30,7 @@ const rows = [
     createData('Campeonato Brasileiro 2024', '10/05/2024', '30/12/2024', false),
     createData('Campeonato Brasileiro 2024', '10/05/2024', '30/12/2024', true),
     createData('Campeonato Brasileiro 2024', '10/05/2024', '30/12/2024', true),
-];
+]
 
 const Champion: React.FC = () => {
     const theme = useTheme()
@@ -135,4 +135,4 @@ const Champion: React.FC = () => {
     )
 }
 
-export default Champion;
+export default Champion

@@ -1,6 +1,6 @@
-import React from "react";
-import { Box } from "@mui/material";
-import PageLink from "./PageLink";
+import React from "react"
+import { Box } from "@mui/material"
+import PageLink from "./PageLink"
 
 const Pagination: React.FC = () => {
     return (

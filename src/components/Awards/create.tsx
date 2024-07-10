@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
+import React, {useState} from "react"
+import Image from "next/image"
 import {
     Box,
     Button,
@@ -11,10 +11,11 @@ import {
     Select,
     MenuItem,
     Switch
-  } from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import "dayjs/locale/pt-br"
+import { useTheme } from "@mui/material"
 
 const CreateNewAward: React.FC = () => {
     const theme = useTheme()
@@ -24,18 +25,18 @@ const CreateNewAward: React.FC = () => {
 
     const readFileDataAsBase64 = (file: any) => {
         return new Promise((resolve, reject) => {
-            const reader = new FileReader();
+            const reader = new FileReader()
     
             reader.onload = (event) => {
-                resolve(event.target?.result);
-            };
+                resolve(event.target?.result)
+            }
     
             reader.onerror = (err) => {
-                reject(err);
-            };
+                reject(err)
+            }
     
-            reader.readAsDataURL(file);
-        });
+            reader.readAsDataURL(file)
+        })
     }
 
     return (
@@ -43,7 +44,7 @@ const CreateNewAward: React.FC = () => {
             <Box display="flex" width="100%">
                 <Box display="flex" flexDirection="column" width="50%">
                     <p className="ml-5 text-[20px]">Cadastro de Prêmios</p>
-                    <FormControl variant="filled" className="left-5 w-[70%] !mt-15">
+                    <FormControl variant="filled" className="left-5 w-[90%] !mt-15">
                         <InputLabel id="demo-simple-select-filled-label">CATEGORIA DO PRÊMIO</InputLabel>
                         <Select
                             labelId="demo-simple-select-filled-label"
@@ -61,23 +62,23 @@ const CreateNewAward: React.FC = () => {
                         variant="filled"
                         label="DESCRIÇÃO DO PRÊMIO"
                         placeholder="Ex.: Moto"
-                        className="left-5 w-[70%] !mt-5"
+                        className="left-5 w-[90%] !mt-5"
                     />
                     <TextField
                         size="medium"
                         variant="filled"
                         label="COD. IDENTIFICAÇÃO DO PRÉMIO"
                         placeholder="Ex.: Chassi 000000000000"
-                        className="left-5 w-[70%] !mt-5"
+                        className="left-5 w-[90%] !mt-5"
                     />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
                         <DatePicker
                             label="DATA INICIO"
                             slotProps={{ textField: { variant: 'filled' } }}
-                            className="left-5 w-[30%] !mt-5"
+                            className="left-5 w-[60%] !mt-5"
                         />
                     </LocalizationProvider>
-                    <button className="relative mt-10 ml-5 h-auto w-[70%]" onClick={() => inputRef.current?.click()}>
+                    <button className="relative mt-10 ml-5 h-auto w-[90%]" onClick={() => inputRef.current?.click()}>
                         {
                             imageData === '' && <span className="absolute left-[50%] translate-x-[-50%] top-5">Insira um Banner</span>
                         }
@@ -118,7 +119,7 @@ const CreateNewAward: React.FC = () => {
                     </Box>
                     <Box display="flex" flexDirection="column" alignItems="center">
                         <p>Ativo/Inativo</p>
-                        <Switch />
+                        <Switch defaultChecked />
                     </Box>
                     <Box display="flex" flexDirection="column" alignItems="center">
                         <p>Status</p>
@@ -144,4 +145,4 @@ const CreateNewAward: React.FC = () => {
     )
 }
 
-export default CreateNewAward;
+export default CreateNewAward

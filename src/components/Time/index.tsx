@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     TextField,
@@ -10,18 +10,18 @@ import {
     TableRow,
     TableCell,
     TableBody
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
-import Image from "next/image";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
+import Image from "next/image"
 
 function createData(
     name: string,
     createdDate: string,
     icon: string
 ) {
-    return { name, createdDate, icon };
+    return { name, createdDate, icon }
 }
 
 const rows = [
@@ -128,4 +128,4 @@ const TimeListComponent: React.FC = () => {
     )
 }
 
-export default TimeListComponent;
+export default TimeListComponent

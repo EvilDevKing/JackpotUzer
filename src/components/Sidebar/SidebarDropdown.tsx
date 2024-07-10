@@ -1,10 +1,10 @@
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTheme } from "@mui/material";
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useTheme } from "@mui/material"
 
 const SidebarDropdown = ({ item }: any) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const theme = useTheme()
 
   return (
@@ -28,7 +28,7 @@ const SidebarDropdown = ({ item }: any) => {
         ))}
       </ul>
     </>
-  );
-};
+  )
+}
 
-export default SidebarDropdown;
+export default SidebarDropdown

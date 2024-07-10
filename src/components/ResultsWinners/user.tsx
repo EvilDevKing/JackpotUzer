@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
+import React, {useState} from "react"
+import Image from "next/image"
 import {
     Box,
     Tab,
@@ -9,11 +9,11 @@ import {
     InputLabel,
     Select,
     MenuItem
-  } from "@mui/material";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import CheckButton from "../common/CheckButton";
-import { Close } from "@mui/icons-material";
-import {useTheme} from "@mui/material";
+  } from "@mui/material"
+import { TabContext, TabList, TabPanel } from "@mui/lab"
+import CheckButton from "../common/CheckButton"
+import { Close } from "@mui/icons-material"
+import {useTheme} from "@mui/material"
 
 const ResultsWinnersDetailUserComponent: React.FC = () => {
     const theme = useTheme()
@@ -216,4 +216,4 @@ const ResultsWinnersDetailUserComponent: React.FC = () => {
     )
 }
 
-export default ResultsWinnersDetailUserComponent;
+export default ResultsWinnersDetailUserComponent

@@ -1,6 +1,6 @@
-import React, {ChangeEvent} from "react";
-import { FormControlLabel, Checkbox } from "@mui/material";
-import { useTheme } from "@mui/material";
+import React, {ChangeEvent} from "react"
+import { FormControlLabel, Checkbox } from "@mui/material"
+import { useTheme } from "@mui/material"
 
 interface CheckButtonProps {
     label: string,

@@ -1,7 +1,7 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, {useState} from "react"
+import Image from "next/image"
+import Link from "next/link"
 import {
     Box,
     Button,
@@ -10,10 +10,10 @@ import {
     InputLabel,
     Select,
     MenuItem
-  } from "@mui/material";
-import CheckButton from "../common/CheckButton";
-import { Search, Close } from "@mui/icons-material";
-import {useTheme} from "@mui/material";
+  } from "@mui/material"
+import CheckButton from "../common/CheckButton"
+import { Search, Close } from "@mui/icons-material"
+import {useTheme} from "@mui/material"
 
 const CreateNewResultsRegist: React.FC = () => {
     const theme = useTheme()
@@ -219,4 +219,4 @@ const CreateNewResultsRegist: React.FC = () => {
     )
 }
 
-export default CreateNewResultsRegist;
+export default CreateNewResultsRegist

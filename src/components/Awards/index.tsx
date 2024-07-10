@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     TextField,
@@ -11,10 +11,10 @@ import {
     TableRow,
     TableCell,
     TableBody
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     category: string,
@@ -23,7 +23,7 @@ function createData(
     status: string,
     isActive: boolean
 ) {
-    return { category, description, startDate, status, isActive };
+    return { category, description, startDate, status, isActive }
 }
 
 const rows = [
@@ -139,4 +139,4 @@ const AwardsComponent: React.FC = () => {
     )
 }
 
-export default AwardsComponent;
+export default AwardsComponent

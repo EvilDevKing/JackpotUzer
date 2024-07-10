@@ -1,16 +1,15 @@
-"use client";
-
-import React from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import SidebarItem from "@/components/Sidebar/SidebarItem";
-import ClickOutside from "@/components/ClickOutside";
-import useLocalStorage from "@/hooks/useLocalStorage";
+"use client"
+import React from "react"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import Image from "next/image"
+import SidebarItem from "@/components/Sidebar/SidebarItem"
+import ClickOutside from "@/components/ClickOutside"
+import useLocalStorage from "@/hooks/useLocalStorage"
 
 interface SidebarProps {
-  sidebarOpen: boolean;
-  setSidebarOpen: (arg: boolean) => void;
+  sidebarOpen: boolean
+  setSidebarOpen: (arg: boolean) => void
 }
 
 const menuGroups = [
@@ -135,7 +134,6 @@ const menuGroups = [
                 <circle cx="6" cy="6" r="5.5" stroke="#05B59D"/>
                 <circle cx="5.9999" cy="6.00002" r="3.6" fill="#05B59D"/>
               </svg>
-
             ),
             label: "Perguntas",
             route: "/config/questions",
@@ -267,12 +265,12 @@ const menuGroups = [
       },
     ],
   },
-];
+]
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
-  const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+  const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard")
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
@@ -352,7 +350,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         </div>
       </aside>
     </ClickOutside>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

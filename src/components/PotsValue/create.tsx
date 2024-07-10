@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useState} from "react"
 import {
     Box,
     Button,
@@ -10,10 +10,11 @@ import {
     Select,
     MenuItem,
     Switch
-  } from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import "dayjs/locale/pt-br"
+import { useTheme } from "@mui/material"
 
 const CreateNewPots: React.FC = () => {
     const theme = useTheme()
@@ -22,28 +23,12 @@ const CreateNewPots: React.FC = () => {
     const [initValue, setInitValue] = useState('')
     const [startDate, setStartDate] = useState('')
 
-    const readFileDataAsBase64 = (file: any) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-    
-            reader.onload = (event) => {
-                resolve(event.target?.result);
-            };
-    
-            reader.onerror = (err) => {
-                reject(err);
-            };
-    
-            reader.readAsDataURL(file);
-        });
-    }
-
     return (
         <Box display="flex" flexDirection="column">
             <Box display="flex" width="100%">
                 <Box display="flex" flexDirection="column" width="50%">
                     <p className="ml-5 text-[20px]">Cadastro de Pote</p>
-                    <FormControl variant="filled" className="left-5 w-[70%] !mt-15">
+                    <FormControl variant="filled" className="left-5 w-[90%] !mt-15">
                         <InputLabel id="demo-simple-select-filled-label">TIME RESPONSÁVEL JACKPOT</InputLabel>
                         <Select
                             labelId="demo-simple-select-filled-label"
@@ -52,11 +37,11 @@ const CreateNewPots: React.FC = () => {
                             onChange={(e) => setTimeType(e.target.value)}
                         >
                             <MenuItem value={1}>FLAMENGO</MenuItem>
-                            <MenuItem value={2}>Twenty</MenuItem>
-                            <MenuItem value={3}>Thirty</MenuItem>
+                            <MenuItem value={2}>PALMEIRAS</MenuItem>
+                            <MenuItem value={3}>GOIÁS</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl variant="filled" className="left-5 w-[70%] !mt-5">
+                    <FormControl variant="filled" className="left-5 w-[90%] !mt-5">
                         <InputLabel id="demo-simple-select-filled-label">CAMPEONATO</InputLabel>
                         <Select
                             labelId="demo-simple-select-filled-label"
@@ -69,12 +54,12 @@ const CreateNewPots: React.FC = () => {
                             <MenuItem value={3}>Thirty</MenuItem>
                         </Select>
                     </FormControl>
-                    <Box display="flex" gap={3} width="70%" marginTop="20px" marginLeft="20px">
+                    <Box display="flex" gap={3} width="90%" marginTop="20px" marginLeft="20px">
                         <TextField
                             size="medium"
                             variant="filled"
-                            label="NOME DO CAMPEONATO"
-                            className="w-[60%]"
+                            label="VALOR INCIAL DO POTE"
+                            className="w-[50%]"
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -83,11 +68,11 @@ const CreateNewPots: React.FC = () => {
                                 )
                             }}
                         />
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
                             <DatePicker
                                 label="DATA INICIO"
                                 slotProps={{ textField: { variant: 'filled' } }}
-                                className="w-[40%]"
+                                className="w-[50%]"
                             />
                         </LocalizationProvider>
                     </Box>
@@ -103,7 +88,7 @@ const CreateNewPots: React.FC = () => {
                     </Box>
                     <Box display="flex" flexDirection="column" alignItems="center">
                         <p>Ativo/Inativo</p>
-                        <Switch />
+                        <Switch defaultChecked />
                     </Box>
                     <Box display="flex" justifyContent="center" alignItems="flex-start">
                         <button className="text-red-dark h-auto flex gap-1" onClick={(e) => console.log(e)}>
@@ -143,4 +128,4 @@ const CreateNewPots: React.FC = () => {
     )
 }
 
-export default CreateNewPots;
+export default CreateNewPots

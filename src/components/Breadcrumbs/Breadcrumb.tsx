@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from "next/link"
 
 interface BreadcrumbProps {
-  mainPageName: string;
-  subPageNames?: any;
+  mainPageName: string
+  subPageNames?: any
 }
 
 const Breadcrumb = ({ mainPageName, subPageNames }: BreadcrumbProps) => {
@@ -29,7 +29,7 @@ const Breadcrumb = ({ mainPageName, subPageNames }: BreadcrumbProps) => {
         </ol>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Breadcrumb;
+export default Breadcrumb

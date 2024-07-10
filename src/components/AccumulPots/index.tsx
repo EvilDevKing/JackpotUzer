@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     Button,
@@ -16,10 +16,10 @@ import {
     TableRow,
     TableCell,
     Switch
-  } from "@mui/material";
-import { Search, FilterAlt, FilterAltOutlined } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search, FilterAlt, FilterAltOutlined } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 const AccumulPotsComponent: React.FC = () => {
     const theme = useTheme()
@@ -124,4 +124,4 @@ const AccumulPotsComponent: React.FC = () => {
     )
 }
 
-export default AccumulPotsComponent;
+export default AccumulPotsComponent

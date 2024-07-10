@@ -1,22 +1,22 @@
-"use client";
-import "@/css/montserrat.css";
-import "@/css/style.css";
-import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
+"use client"
+import "@/css/montserrat.css"
+import "@/css/style.css"
+import React, { useEffect, useState } from "react"
+import Loader from "@/components/common/Loader"
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [loading, setLoading] = useState<boolean>(true)
 
-  // const pathname = usePathname();
+  // const pathname = usePathname()
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   return (
     <html lang="en">
@@ -24,5 +24,5 @@ export default function RootLayout({
         {loading ? <Loader /> : children}
       </body>
     </html>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 "use client"
-import React, {useState} from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, {useState} from "react"
+import Image from "next/image"
+import Link from "next/link"
 import {
     Box,
     TextField,
@@ -11,9 +11,9 @@ import {
     TableBody,
     TableRow,
     TableCell
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import {useTheme} from "@mui/material";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import {useTheme} from "@mui/material"
 
 function createData(
     bettor: string,
@@ -23,7 +23,7 @@ function createData(
     awardedQuestions: string,
     raisedAmount: string,
 ) {
-    return { bettor, bettorAvatar, codJackpot, jackpots, awardedQuestions, raisedAmount };
+    return { bettor, bettorAvatar, codJackpot, jackpots, awardedQuestions, raisedAmount }
 }
   
 const rows = [
@@ -42,7 +42,7 @@ const rows = [
     createData('Jenny Wilson', '/images/user/user-13.png', 15230, 1, '2', 'R$ 8,00'),
     createData('Jenny Wilson', '/images/user/user-14.png', 15230, 1, '2', 'R$ 8,00'),
     createData('Jenny Wilson', '/images/user/user-15.png', 15230, 1, '2', 'R$ 8,00'),
-];
+]
 
 const RealiCardDetailComponent: React.FC = () => {
     const theme = useTheme()
@@ -143,4 +143,4 @@ const RealiCardDetailComponent: React.FC = () => {
     )
 }
 
-export default RealiCardDetailComponent;
+export default RealiCardDetailComponent

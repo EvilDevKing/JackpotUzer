@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     Button,
@@ -16,10 +16,10 @@ import {
     TableBody,
     TableRow,
     TableCell
-  } from "@mui/material";
-import { Search, FilterAlt, FilterAltOutlined, Menu } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search, FilterAlt, FilterAltOutlined, Menu } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     event: string,
@@ -30,7 +30,7 @@ function createData(
     totalBalance: string,
     endDate: string
 ) {
-    return { event, bronze, prata, ouro, total, totalBalance, endDate };
+    return { event, bronze, prata, ouro, total, totalBalance, endDate }
 }
   
 const rows = [
@@ -40,7 +40,7 @@ const rows = [
     createData('Flamengo X Goiás', 50, 10, 0, 62, 'R$ 60.000,00', '30/05/2024'),
     createData('Flamengo X Goiás', 0, 0, 1, 1, 'R$ 60.000,00', '30/05/2024'),
     createData('Flamengo X Goiás', 50, 10, 0, 62, 'R$ 60.000,00', '30/05/2024'),
-];
+]
 
 const ResultsWinnersComponent: React.FC = () => {
     const theme = useTheme()
@@ -134,4 +134,4 @@ const ResultsWinnersComponent: React.FC = () => {
     )
 }
 
-export default ResultsWinnersComponent;
+export default ResultsWinnersComponent

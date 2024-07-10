@@ -1,8 +1,8 @@
-"use client";
-import React, { useState, ReactNode } from "react";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
-import { createTheme, ThemeProvider } from "@mui/material";
+"use client"
+import React, { useState, ReactNode } from "react"
+import Sidebar from "@/components/Sidebar"
+import Header from "@/components/Header"
+import { createTheme, ThemeProvider } from "@mui/material"
 
 const theme = createTheme({
   palette: {
@@ -85,9 +85,9 @@ const theme = createTheme({
 export default function DefaultLayout({
   children,
 }: {
-  children: ReactNode;
+  children: ReactNode
 }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   return (
     <ThemeProvider theme={theme}>
       {/* <!-- ===== Page Wrapper Star ===== --> */}
@@ -114,5 +114,5 @@ export default function DefaultLayout({
       </div>
       {/* <!-- ===== Page Wrapper End ===== --> */}
     </ThemeProvider>
-  );
+  )
 }

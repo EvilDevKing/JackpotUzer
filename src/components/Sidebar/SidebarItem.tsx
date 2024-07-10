@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import SidebarDropdown from "@/components/Sidebar/SidebarDropdown";
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import SidebarDropdown from "@/components/Sidebar/SidebarDropdown"
 
 const SidebarItem = ({ item, pageName, setPageName }: any) => {
   const pathname = usePathname()
@@ -48,7 +48,7 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
         )}
       </li>
     </>
-  );
-};
+  )
+}
 
-export default SidebarItem;
+export default SidebarItem

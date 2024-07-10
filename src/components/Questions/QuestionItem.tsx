@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useState} from "react"
 import {
     Box,
     TextField,
@@ -8,56 +8,32 @@ import {
     MenuItem,
     Select,
     SelectChangeEvent
-} from "@mui/material";
-import CheckButton from "../common/CheckButton";
+} from "@mui/material"
+import CheckButton from "../common/CheckButton"
 
 interface QuestionItemProps {
-    item?: any
+    index: number,
+    item: any,
+    onUpdate: (index: number, key: string, value: any) => void,
+    onDelete: (index: number) => void
 }
 
-const QuestionItem = ({ item }: { item?: QuestionItemProps; }) => {
+const QuestionItem = ({ index, item, onUpdate, onDelete }: QuestionItemProps) => {
 
-    const [questionType, setQuestionType] = useState('')
-    const [fieldType, setFieldType] = useState('')
-    const [options, setOptions] = useState([
-        {
-            label: "Ex.: Vermelho",
-            checked: false
-        },
-        {
-            label: "Ex.: 00 a 00",
-            checked: false
-        },
-        {
-            label: "Ex.: 00 a 00",
-            checked: false
-        },
-        {
-            label: "Ex.: Vermelho",
-            checked: false
-        },
-        {
-            label: "Ex.: 00 a 00",
-            checked: false
-        },
-        {
-            label: "Ex.: 00 a 00",
-            checked: false
-        },
-    ])
+    const [questionType, setQuestionType] = useState(item.questionType)
+    const [pairType, setPairType] = useState(item.fieldType)
+    const options = ["Ex.: Vermelho", "Ex.: 00 a 00", "Ex.: 00 a 00", "Ex.: Vermelho", "Ex.: 00 a 00", "Ex.: 00 a 00"]
 
-    const handleCheckChange = (index: any, data: any, checked: Boolean) => {
-        setOptions(data.map((item: any, i: any) => 
-            index === i ? {...item, checked} : item
-        ))
+    const handleCheckChange = (ind: number, checked: boolean) => {
+        onUpdate(index, 'objOptions', item.objOptions.map((opt: boolean, i: number) => ind === i ? checked : opt))
     }
 
     return (
-        <div className="px-[20px] py-[20px] bg-white shadow-card-10 rounded-[10px] w-full mb-5">
+        <Box width="100%" marginBottom={2} paddingX={3} paddingY={3} bgcolor="white" boxShadow={3} borderRadius={3}>
             <Box display="flex" flexDirection="column">
                 <Box display="flex" justifyContent="space-between">
-                    <span>Pergunta 1</span>
-                    <button className="text-red-dark" onClick={(e) => console.log(e)}>
+                    <span>Pergunta {index+1}</span>
+                    <button className="text-red-dark" onClick={(e) => onDelete(index)}>
                         <svg
                             className="fill-current"
                             width="20"
@@ -79,6 +55,8 @@ const QuestionItem = ({ item }: { item?: QuestionItemProps; }) => {
                     label="DIGITE A PERGUNTA"
                     placeholder="Ex.: Placar"
                     className="w-[80%] !mt-5"
+                    value={item.title}
+                    onChange={(e) => onUpdate(index, 'title', e.target.value)}
                 />
                 <FormControl variant="filled" className="w-[80%] !mt-3">
                     <InputLabel id="demo-simple-select-filled-label">TIPO DE PERGUNTA</InputLabel>
@@ -86,56 +64,88 @@ const QuestionItem = ({ item }: { item?: QuestionItemProps; }) => {
                         labelId="demo-simple-select-filled-label"
                         id="demo-simple-select-filled"
                         value={questionType}
-                        onChange={(e) => setQuestionType(e.target.value)}
+                        onChange={(e) => {
+                            setQuestionType(e.target.value)
+                            onUpdate(index, 'questionType', e.target.value)
+                        }}
                     >
-                        <MenuItem value={1}>Objetiva</MenuItem>
-                        <MenuItem value={2}>Subjetiva</MenuItem>
+                        <MenuItem value='1'>Objetiva</MenuItem>
+                        <MenuItem value='2'>Subjetiva</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl variant="filled" className="w-[80%] !mt-3">
-                    <InputLabel id="demo-simple-select-filled-label">QUANTIDADE DE CAMPOS</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-filled-label"
-                        id="demo-simple-select-filled"
-                        value={fieldType}
-                        onChange={(e) => setFieldType(e.target.value)}
-                    >
-                        <MenuItem value={1}>Dupla1</MenuItem>
-                        <MenuItem value={2}>Dupla2</MenuItem>
-                    </Select>
-                </FormControl>
-                <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={2} rowGap={1} justifyContent="center" marginLeft="10px" marginTop={3} width="80%">
-                    {
-                        options.map((opt, i) => 
-                            <CheckButton label={opt.label} value={opt.checked} onChange={(e) => handleCheckChange(i, options, e.target.checked)} />        
-                        )
-                    }
-                </Box>
-                <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={3} marginTop={3} width="80%">
-                    <TextField
-                        size="medium"
-                        variant="filled"
-                        label="Mandante"
-                        placeholder="Ex: 02"
-                        className="w-full !mt-5"
-                    />
-                    <TextField
-                        size="medium"
-                        variant="filled"
-                        label="CARACTERE"
-                        placeholder="Ex.: X, ou"
-                        className="w-full !mt-5"
-                    />
-                    <TextField
-                        size="medium"
-                        variant="filled"
-                        label="Visitante"
-                        placeholder="Ex: 03"
-                        className="w-full !mt-5"
-                    />
-                </Box>
+                {
+                    questionType === '1' ?
+                        <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={2} rowGap={1} justifyContent="center" marginLeft="10px" marginTop={3} width="80%">
+                            {
+                                options.map((opt, i) => 
+                                    <CheckButton key={i} label={opt} value={item.objOptions[i]} onChange={(e) => handleCheckChange(i, e.target.checked)} />        
+                                )
+                            }
+                        </Box>
+                    : (
+                        <Box display="flex" flexDirection="column" width="100%">
+                            <FormControl variant="filled" className="w-[80%] !mt-3">
+                                <InputLabel id="demo-simple-select-filled-label">QUANTIDADE DE CAMPOS</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-filled-label"
+                                    id="demo-simple-select-filled"
+                                    value={pairType}
+                                    onChange={(e) => {
+                                        setPairType(e.target.value)
+                                        onUpdate(index, 'fieldType', e.target.value)
+                                    }}
+                                >
+                                    <MenuItem value='1'>Unico</MenuItem>
+                                    <MenuItem value='2'>Duplo</MenuItem>
+                                </Select>
+                            </FormControl>
+                            {
+                                pairType === '1' ?
+                                <TextField
+                                        size="medium"
+                                        variant="filled"
+                                        label="Marcar o primeiro gol"
+                                        placeholder="Ex: 3"
+                                        className="w-[40%] !mt-5"
+                                        value={item.subjSingleValue}
+                                        onChange={(e) => onUpdate(index, 'subjSingleValue', e.target.value)}
+                                    />
+                                :
+                                <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={3} marginTop={2} width="80%">
+                                    <TextField
+                                        size="medium"
+                                        variant="filled"
+                                        label="Mandante"
+                                        placeholder="Ex: 02"
+                                        className="w-full"
+                                        value={item.subjDoubleValues[0]}
+                                        onChange={(e) => onUpdate(index, 'subjDoubleValues', item.subjDoubleValues.map((val: string, i: number) => i === 0 ? e.target.value : val))}
+                                    />
+                                    <TextField
+                                        size="medium"
+                                        variant="filled"
+                                        label="CARACTERE"
+                                        placeholder="Ex.: X, ou"
+                                        className="w-full"
+                                        value={item.subjDoubleValues[1]}
+                                        onChange={(e) => onUpdate(index, 'subjDoubleValues', item.subjDoubleValues.map((val: string, i: number) => i === 1 ? e.target.value : val))}
+                                    />
+                                    <TextField
+                                        size="medium"
+                                        variant="filled"
+                                        label="Visitante"
+                                        placeholder="Ex: 03"
+                                        className="w-full"
+                                        value={item.subjDoubleValues[2]}
+                                        onChange={(e) => onUpdate(index, 'subjDoubleValues', item.subjDoubleValues.map((val: string, i: number) => i === 2 ? e.target.value : val))}
+                                    />
+                                </Box>
+                            }
+                        </Box>
+                    )
+                }
             </Box>
-        </div>
+        </Box>
     )
 }
 

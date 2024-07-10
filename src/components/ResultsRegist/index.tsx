@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     Button,
@@ -11,10 +11,10 @@ import {
     TableBody,
     TableRow,
     TableCell
-  } from "@mui/material";
-import { Search, FilterAlt, FilterAltOutlined } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search, FilterAlt, FilterAltOutlined } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     event: string,
@@ -23,7 +23,7 @@ function createData(
     releaseDate: string,
     status: string
 ) {
-    return { event, endDate, registDate, releaseDate, status };
+    return { event, endDate, registDate, releaseDate, status }
 }
 
 const rows = [
@@ -109,4 +109,4 @@ const ResultsRegistComponent: React.FC = () => {
     )
 }
 
-export default ResultsRegistComponent;
+export default ResultsRegistComponent

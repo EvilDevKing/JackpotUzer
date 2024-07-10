@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     Button,
@@ -16,10 +16,10 @@ import {
     TableBody,
     TableRow,
     TableCell
-  } from "@mui/material";
-import { Search, FilterAlt, FilterAltOutlined, Menu } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search, FilterAlt, FilterAltOutlined, Menu } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     championTime: string,
@@ -29,7 +29,7 @@ function createData(
     status: string,
     endedDate: string
 ) {
-    return { championTime, bettorsNum, raisedAmount, potValue, status, endedDate };
+    return { championTime, bettorsNum, raisedAmount, potValue, status, endedDate }
 }
 
 const rows = [
@@ -156,4 +156,4 @@ const RealiCardComponent: React.FC = () => {
     )
 }
 
-export default RealiCardComponent;
+export default RealiCardComponent

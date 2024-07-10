@@ -1,6 +1,6 @@
 "use client"
-import React, {useState} from "react";
-import Link from "next/link";
+import React, {useState} from "react"
+import Link from "next/link"
 import {
     Box,
     TextField,
@@ -11,10 +11,10 @@ import {
     TableRow,
     TableCell,
     TableBody
-  } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import Pagination from "../Pagination";
-import { useTheme } from "@mui/material";
+  } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Pagination from "../Pagination"
+import { useTheme } from "@mui/material"
 
 function createData(
     teamName: string,
@@ -24,7 +24,7 @@ function createData(
     curValue: string,
     isActive: boolean,
 ) {
-    return { teamName, champion, startDate, initValue, curValue, isActive };
+    return { teamName, champion, startDate, initValue, curValue, isActive }
 }
 
 const rows = [
@@ -142,4 +142,4 @@ const PotsValueComponent: React.FC = () => {
     )
 }
 
-export default PotsValueComponent;
+export default PotsValueComponent

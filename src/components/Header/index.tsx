@@ -1,26 +1,25 @@
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-
-import Breadcrumb from "../Breadcrumbs/Breadcrumb";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import { usePathname, useRouter } from "next/navigation"
+import { ArrowBack } from "@mui/icons-material"
+import Breadcrumb from "../Breadcrumbs/Breadcrumb"
+import useLocalStorage from "@/hooks/useLocalStorage"
 
 const Header = (props: {
-  sidebarOpen: string | boolean | undefined;
-  setSidebarOpen: (arg0: boolean) => void;
+  sidebarOpen: string | boolean | undefined
+  setSidebarOpen: (arg0: boolean) => void
 }) => {
-  const pathName = usePathname();
-  const [pageName, setPageName] = useLocalStorage("selectedMenu", "Inicio");
+  const pathName = usePathname()
+  const router = useRouter()
+  const [pageName, setPageName] = useLocalStorage("selectedMenu", "Inicio")
   return (
     <header className="sticky top-10 px-15 z-999 flex w-full">
-      <div className="flex flex-grow items-center justify-between px-4 py-5 shadow-card-10 md:px-5 2xl:px-10 rounded-[10px] bg-white">
+      <div className="flex flex-grow items-center justify-between px-4 py-5 shadow-card-10 md:px-5 2xl:pr-10 2xl:pl-5 rounded-[10px] bg-white">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
             aria-controls="sidebar"
             onClick={(e) => {
-              e.stopPropagation();
-              props.setSidebarOpen(!props.sidebarOpen);
+              e.stopPropagation()
+              props.setSidebarOpen(!props.sidebarOpen)
             }}
             className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-dark-3 dark:bg-dark-2 lg:hidden"
           >
@@ -60,7 +59,10 @@ const Header = (props: {
         </div>
 
         <div className="hidden xl:block">
-          <div>
+          <div className="flex items-center gap-2">
+            <button className="flex justify-center items-center w-[40px] h-[40px] hover:bg-green-100 hover:rounded-[9999px] duration-500" onClick={router.back}>
+              <ArrowBack />
+            </button>
             <h1 className="text-heading-6 font-bold text-dark dark:text-white">
               {pageName.trim() && pageName.split(' ').map((text, i) => text[0].toUpperCase() + text.substring(1)).join(' ')}
             </h1>
@@ -72,7 +74,7 @@ const Header = (props: {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
