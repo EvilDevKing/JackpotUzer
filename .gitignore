@@ -16,6 +16,10 @@
 # production
 /build
 
+# backend
+/backend/bin
+/backend/obj
+
 # misc
 .DS_Store
 *.pem
