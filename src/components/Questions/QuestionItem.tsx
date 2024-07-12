@@ -54,11 +54,11 @@ const QuestionItem = ({ index, item, onUpdate, onDelete }: QuestionItemProps) =>
                     variant="filled"
                     label="DIGITE A PERGUNTA"
                     placeholder="Ex.: Placar"
-                    className="w-[80%] !mt-5"
+                    className="w-full !mt-5"
                     value={item.title}
                     onChange={(e) => onUpdate(index, 'title', e.target.value)}
                 />
-                <FormControl variant="filled" className="w-[80%] !mt-3">
+                <FormControl variant="filled" className="w-full !mt-3">
                     <InputLabel id="demo-simple-select-filled-label">TIPO DE PERGUNTA</InputLabel>
                     <Select
                         labelId="demo-simple-select-filled-label"
@@ -75,7 +75,7 @@ const QuestionItem = ({ index, item, onUpdate, onDelete }: QuestionItemProps) =>
                 </FormControl>
                 {
                     questionType === '1' ?
-                        <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={2} rowGap={1} justifyContent="center" marginLeft="10px" marginTop={3} width="80%">
+                        <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" columnGap={2} rowGap={1} justifyContent="center" marginLeft="10px" marginTop={3} >
                             {
                                 options.map((opt, i) => 
                                     <CheckButton key={i} label={opt} value={item.objOptions[i]} onChange={(e) => handleCheckChange(i, e.target.checked)} />        

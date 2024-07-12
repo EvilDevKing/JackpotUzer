@@ -19,6 +19,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { renderTimeViewClock } from '@mui/x-date-pickers/timeViewRenderers'
 import dayjs from "dayjs"
 import "dayjs/locale/pt-br"
+import { convertDateToString, convertTimeToString } from "@/helper"
 import toastr from "toastr"
 import "toastr/build/toastr.min.css"
 
@@ -69,23 +70,6 @@ const CreateNewRegist: React.FC = () => {
     
             reader.readAsDataURL(file)
         })
-    }
-
-    const convertDateToString = (obj: dayjs.Dayjs | null) => {
-        if (obj === null) return '2000-01-01'
-        let dateObj = obj.toDate()
-        let y = dateObj.getFullYear()
-        let m = dateObj.getMonth()+1 < 10 ? '0'+(dateObj.getMonth()+1) : dateObj.getMonth()+1
-        let d = dateObj.getDate() < 10 ? '0'+dateObj.getDate() : dateObj.getDate()
-        return y + '-' + m + '-' + d
-    }
-
-    const convertTimeToString = (obj: dayjs.Dayjs | null) => {
-        if (obj === null) return '2000-01-01T00:00'
-        let dateObj = obj.toDate()
-        let h = dateObj.getHours() < 10 ? '0'+dateObj.getHours() : dateObj.getHours()
-        let m = dateObj.getMinutes() < 10 ? '0'+dateObj.getMinutes() : dateObj.getMinutes()
-        return '2000-01-01T' + h + ':' + m
     }
 
     return (

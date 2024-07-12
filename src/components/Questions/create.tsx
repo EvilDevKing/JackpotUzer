@@ -136,7 +136,7 @@ const CreateNewQuestion: React.FC = () => {
             {
                 awardType === '1' ?
                     commonData.length ? 
-                        <Box width="50%" paddingY={3}>
+                        <Box display="grid" gridTemplateColumns="1fr 1fr" columnGap={5} paddingY={3} paddingX={3}>
                             { commonData.map((item, i) => 
                                 <QuestionItem 
                                     key={i}

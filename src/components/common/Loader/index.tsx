@@ -1,8 +1,9 @@
+import { Box } from "@mui/material"
 const Loader = () => {
   return (
-    <div className="flex h-screen items-center justify-center bg-white dark:bg-dark">
-      <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
-    </div>
+    <Box className="flex h-full w-full items-center justify-center bg-white/70 dark:bg-dark absolute top-0 z-999">
+      <Box className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></Box>
+    </Box>
   )
 }
 

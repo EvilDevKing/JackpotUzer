@@ -19,6 +19,7 @@
 # backend
 /backend/bin
 /backend/obj
+/backend/wwwroot
 
 # misc
 .DS_Store

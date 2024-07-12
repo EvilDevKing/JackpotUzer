@@ -1,5 +1,5 @@
 using Npgsql;
-using RoutingDemo.Services;
+using ApiServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,10 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreDB");
 builder.Services.AddScoped((provider) => new NpgsqlConnection(connectionString));
-builder.Services.AddScoped<IUserService, UsersService>();
+builder.Services.AddScoped<IChampionService, ChampionService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<IPotService, PotService>();
+builder.Services.AddScoped<IAwardService, AwardService>();
 
 var app = builder.Build();
 
@@ -26,10 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

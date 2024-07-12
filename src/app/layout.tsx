@@ -2,7 +2,14 @@
 import "@/css/montserrat.css"
 import "@/css/style.css"
 import React, { useEffect, useState } from "react"
-import Loader from "@/components/common/Loader"
+
+const Loader = () => {
+  return (
+    <div className="flex h-screen items-center justify-center bg-white dark:bg-dark">
+      <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
+    </div>
+  )
+}
 
 export default function RootLayout({
   children,
