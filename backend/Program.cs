@@ -19,6 +19,7 @@ builder.Services.AddScoped<IChampionService, ChampionService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPotService, PotService>();
 builder.Services.AddScoped<IAwardService, AwardService>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
 
 var app = builder.Build();
 
